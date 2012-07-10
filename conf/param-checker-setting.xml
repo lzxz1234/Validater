@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<check-config>
+    <!-- 配置示例 -->
+    <check-list>
+	    <check id="registChecker" class="com.qianty.validater.ValidaterTest.UserInfo" ognl="user != null" msg="用户不能为空">
+	        <cunit field="user" ognl="username != null and password != null" msg="用户无效">
+	            <cunit field="username" regex="[a-z A-Z 0-9]{6,}" msg="无效用户名"></cunit>
+	            <cunit field="password" regex="[a-z A-Z 0-9]{6,}" msg="无效密码"></cunit>
+	        </cunit>
+	    </check>
+    </check-list>
+    
+    <check-mapping>
+        <class name="com.qianty.validater.Validater">
+            <method name="test1">
+                <check>registChecker</check>
+            </method>
+            <method name="test2">
+                <check id="registChecker" class="com.qianty.web.obj.dto.RegisterUser" ognl="user != null" msg="用户不能为空">
+		            <cunit field="user" ognl="username != null and password != null" msg="用户无效">
+		                <cunit field="username" regex="[a-z A-Z 0-9]{6,}" msg="无效用户名"></cunit>
+		                <cunit field="password" regex="[a-z A-Z 0-9]{6,}" msg="无效密码"></cunit>
+		            </cunit>
+		        </check>
+            </method>
+        </class>
+    </check-mapping>
+</check-config>
