@@ -26,8 +26,8 @@ public class ValidaterTest {
     @Before
     public void before() {
         User user = new User();
-        user.password = "13 ds57";
-        user.username = "567ytfds";
+        user.password = "13sdfs57";
+        user.username = "56yds";
         info.user = user;
     }
     
@@ -60,18 +60,18 @@ public class ValidaterTest {
         sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>                                                                                ");
         sb.append("<check-config>                                                                                                            ");
         sb.append("    <check-list>                                                                                                          ");
-        sb.append("     <check id=\"checkUserInfo\" class=\"com.qianty.validater.ValidaterTest$UserInfo\" ognl=\"user != null\" msg=\"用户不能为空\">");
-        sb.append("         <cunit field=\"user\" ognl=\"username != null and password != null\" msg=\"用户无效\">                           ");
-        sb.append("             <cunit field=\"username\" regex=\"[a-z A-Z 0-9]{6,}\" msg=\"无效用户名\"></cunit>                            ");
-        sb.append("             <cunit field=\"password\" regex=\"[a-z A-Z 0-9]{6,}\" msg=\"无效密码\"></cunit>                              ");
-        sb.append("         </cunit>                                                                                                         ");
+        sb.append("     <check id=\"checkUserInfo\" ognl=\"user != null\" msg=\"用户不能为空\">");
+        sb.append("         <check field=\"user\" ognl=\"username != null and password != null\" msg=\"用户无效\">                           ");
+        sb.append("             <check field=\"username\" regex=\"[a-z A-Z 0-9]{6,}\" msg=\"无效用户名\"></check>                            ");
+        sb.append("             <check field=\"password\" regex=\"[a-z A-Z 0-9]{6,}\" msg=\"无效密码\"></check>                              ");
+        sb.append("         </check>                                                                                                         ");
         sb.append("     </check>                                                                                                             ");
         sb.append("    </check-list>                                                                                                         ");
         sb.append("                                                                                                                          ");
         sb.append("    <check-mapping>                                                                                                       ");
         sb.append("        <class name=\"com.qianty.validater.ValidaterTest\">                                                      ");
         sb.append("            <method name=\"test\">                                                                                      ");
-        sb.append("                <check>checkUserInfo</check>                                                                              ");
+        sb.append("                <check ref=\"checkUserInfo\"></check>                                                                              ");
         sb.append("            </method>                                                                                                     ");
         sb.append("        </class>                                                                                                          ");
         sb.append("    </check-mapping>                                                                                                      ");
@@ -89,10 +89,10 @@ public class ValidaterTest {
         sb.append("        <class name=\"com.qianty.validater.ValidaterTest\">                                                      ");
         sb.append("            <method name=\"test\">                                                                                      ");
         sb.append("     <check id=\"checkUserInfo\" class=\"com.qianty.validater.ValidaterTest$UserInfo\" ognl=\"user != null\" msg=\"用户不能为空\">");
-        sb.append("         <cunit field=\"user\" ognl=\"username != null and password != null\" msg=\"用户无效\">                           ");
-        sb.append("             <cunit field=\"username\" regex=\"[a-z A-Z 0-9]{6,}\" msg=\"无效用户名\"></cunit>                            ");
-        sb.append("             <cunit field=\"password\" regex=\"[a-z A-Z 0-9]{6,}\" msg=\"无效密码\"></cunit>                              ");
-        sb.append("         </cunit>                                                                                                         ");
+        sb.append("         <check field=\"user\" ognl=\"username != null and password != null\" msg=\"用户无效\">                           ");
+        sb.append("             <check field=\"username\" regex=\"[a-z A-Z 0-9]{6,}\" msg=\"无效用户名\"></check>                            ");
+        sb.append("             <check field=\"password\" regex=\"[a-z A-Z 0-9]{6,}\" msg=\"无效密码\"></check>                              ");
+        sb.append("         </check>                                                                                                         ");
         sb.append("     </check>                                                                                                             ");
         sb.append("            </method>                                                                                                     ");
         sb.append("        </class>                                                                                                          ");

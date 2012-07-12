@@ -29,7 +29,9 @@ public class TestFactory {
      * @throws OgnlException 
      */
     public static Test parseOgnl(String express, String msg) throws OgnlException {
-        
+        if(express == null) {
+            return new DoNotionTest();
+        }
         return new OgnlTest(express, msg);
     }
     
@@ -39,10 +41,18 @@ public class TestFactory {
      * @param msg
      */
     public static Test parseRegex(String regex, String msg) {
-        
+        if(regex == null) {
+            return new DoNotionTest();
+        }
         return new RegexTest(regex, msg);
     }
     
+    private static class DoNotionTest implements Test {
+        @Override
+        public void check(Object obj) throws IllegalArgumentException {
+            
+        }
+    }
     /**
      * @class RegexTest
      * @author lzxz1234<314946925@qq.com>
