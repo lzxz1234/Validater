@@ -27,7 +27,10 @@ public class Checker {
     
     public void check(Object obj) throws Exception {
         
-        Object target = InvokeUtils.getFieldValue(obj, field);
+        Object target = obj;
+        if(field != null && field.length() > 0) {
+            target = InvokeUtils.getFieldValue(obj, field);
+        }
         regex.check(target);
         ognl.check(target);
         for(Checker checker : subCheckers) {

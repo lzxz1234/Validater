@@ -27,10 +27,10 @@ public class ValidaterTest {
     public void before() {
         User user = new User();
         user.password = "13sdfs57";
-        user.username = "56yds";
+        user.username = "56yds2";
         info.user = user;
     }
-    
+
     @Test
     public void test() throws Exception {
         Validater.initXML(getInputStream1());
